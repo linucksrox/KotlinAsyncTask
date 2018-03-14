@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         GetFizzBuzzTask().execute(100)
     }
 
+    // we should not be doing this here, because if the screen rotates or otherwise gets closed, we have a memory leak
     class GetFizzBuzzTask : AsyncTask<Int, Void, String>() {
 
         override fun doInBackground(vararg p0: Int?): String {
