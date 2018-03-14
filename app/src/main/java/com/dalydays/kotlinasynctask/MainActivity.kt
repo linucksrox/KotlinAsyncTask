@@ -11,7 +11,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // execute AsyncTask, send in Int value as the limit to count up to
-        GetFizzBuzzTask().execute(100)
+        val task = GetFizzBuzzTask().execute(100)
+        val returnValue = task.get()
+        println(returnValue)
     }
 
     // we should not be doing this here, because if the screen rotates or otherwise gets closed, we have a memory leak
@@ -30,13 +32,13 @@ class MainActivity : AppCompatActivity() {
                 result += currentString + ","
             }
             println("printing in a background thread")
-            println(result)
+//            println(result)
             return result
         }
 
         override fun onPostExecute(result: String?) {
             println("printing on the main UI thread")
-            println(result)
+//            println(result)
         }
     }
 }
